@@ -1,0 +1,16 @@
+select{
+    font-size: 1em;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: .5em;
+}
+
+form{
+    font-family: 'Lato', sans-serif;
+}
+
+form > input{
+    padding: .25em;
+    margin-bottom: .6em;
+    font-size: 1em;
+    font-family: 'Lato', sans-serif;
+}
