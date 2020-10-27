@@ -1,16 +1,33 @@
-select{
+select {
     font-size: 1em;
     font-family: 'Lato', sans-serif;
     margin-bottom: .5em;
 }
 
-form{
+form {
     font-family: 'Lato', sans-serif;
 }
 
-form > input{
+form > input {
     padding: .25em;
     margin-bottom: .6em;
     font-size: 1em;
     font-family: 'Lato', sans-serif;
+}
+
+#validation-errors {
+    padding-left: .2em;
+    color: red;
+    list-style-type: none;
+}
+
+#validation-errors > li{
+    padding-bottom: .5em;
+    font-size: 1.15em;
+}
+
+.rating-custom{
+    font-weight: bold;
+    cursor: pointer;
+    width: 9.5%;
 }

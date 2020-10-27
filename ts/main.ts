@@ -31,6 +31,23 @@ function addProduct() {
         let game = getVideoGame();
         displayGame(game);
     }
+
+    else{
+        displayRatings();
+    }
+}
+
+function displayRatings() {
+    let ratingsElements = document.querySelectorAll(".rating-custom");
+    for(let i = 0; i < ratingsElements.length; i++) {
+        let currentElement = <HTMLElement>ratingsElements[i];
+        currentElement.onclick = goToRatingsPage;
+        //currentElement.innerHTML += " <a target='_blank' href='https://www.esrb.org/'>Click here for more info.</a>";
+    }
+}
+
+function goToRatingsPage() {
+    window.open("https://www.esrb.org/", "_blank");
 }
 
 /**
@@ -97,8 +114,6 @@ function getInputById(id:string):HTMLInputElement {
     return <HTMLInputElement>document.getElementById(id);
 }
 
-
-// Validate!!!*****************************************
 function allValid() {
     let isValid = true;
 
@@ -118,7 +133,7 @@ function allValid() {
     let rating = (<HTMLOptionElement>document.getElementById("rating")).value;
     if(rating == "") {
         isValid = false;
-        addErrorMessage("Please choose a rating.");
+        addErrorWithCustomClass("Please choose a rating.", "rating-custom");
     }
 
     return isValid;
@@ -127,6 +142,15 @@ function allValid() {
 function addErrorMessage(errorMessage:string) {
     let validErrors = document.getElementById("validation-errors");
     let errorItem = document.createElement("li");
+    errorItem.innerText = errorMessage;
+
+    validErrors.appendChild(errorItem);
+}
+
+function addErrorWithCustomClass(errorMessage:string, cssClass:string) {
+    let validErrors = document.getElementById("validation-errors");
+    let errorItem = document.createElement("li");
+    errorItem.classList.add(cssClass);
     errorItem.innerText = errorMessage;
 
     validErrors.appendChild(errorItem);
