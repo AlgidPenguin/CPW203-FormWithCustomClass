@@ -1,6 +1,7 @@
 class VideoGame{
     title:string;
     price:number;
+    genre:string;
     rating:string;
     isDigitalOnly:boolean;
 }
@@ -63,6 +64,9 @@ function getVideoGame():VideoGame {
     let priceInput= <HTMLInputElement>document.getElementById("price");
     game.price = parseFloat(priceInput.value);
 
+    let genreInput = <HTMLInputElement>document.getElementById("genre");
+    game.genre = genreInput.value.toLowerCase();
+
     let ratingInput = <HTMLSelectElement>document.getElementById("rating");
     game.rating = ratingInput.value;
 
@@ -101,7 +105,7 @@ function displayGame(myGame:VideoGame):void {
                     + myGame.rating + ". It costs " + myGame.price + ". It is " + notDigitalDisplay
                     + " digital only.";*/
 
-    gameInfo.innerText = `${myGame.title} has a rating of ${myGame.rating}. `+
+    gameInfo.innerText = `${myGame.title} is a(n) ${myGame.genre} game and has a rating of ${myGame.rating}. `+
                             `It costs $${myGame.price.toFixed(2)}. ${digitalDisplay}`;
 
     // Add heading in the <div id="display">
@@ -128,6 +132,12 @@ function allValid() {
     if(price == "" || isNaN(priceValue)) {
         isValid = false;
         addErrorMessage("Price is required; must be a number.");
+    }
+
+    let genre = getInputById("genre").value;
+    if(genre == "") {
+        isValid = false;
+        addErrorMessage("Genre is required.");
     }
 
     let rating = (<HTMLOptionElement>document.getElementById("rating")).value;

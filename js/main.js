@@ -37,6 +37,8 @@ function getVideoGame() {
     game.title = titleInput.value;
     var priceInput = document.getElementById("price");
     game.price = parseFloat(priceInput.value);
+    var genreInput = document.getElementById("genre");
+    game.genre = genreInput.value.toLowerCase();
     var ratingInput = document.getElementById("rating");
     game.rating = ratingInput.value;
     var digitalOnly = document.getElementById("online");
@@ -56,7 +58,7 @@ function displayGame(myGame) {
     else {
         digitalDisplay = "You can buy a physical copy in stores.";
     }
-    gameInfo.innerText = myGame.title + " has a rating of " + myGame.rating + ". " +
+    gameInfo.innerText = myGame.title + " is a(n) " + myGame.genre + " game and has a rating of " + myGame.rating + ". " +
         ("It costs $" + myGame.price.toFixed(2) + ". " + digitalDisplay);
     displayDiv.appendChild(gameHeading);
     displayDiv.appendChild(gameInfo);
@@ -76,6 +78,11 @@ function allValid() {
     if (price == "" || isNaN(priceValue)) {
         isValid = false;
         addErrorMessage("Price is required; must be a number.");
+    }
+    var genre = getInputById("genre").value;
+    if (genre == "") {
+        isValid = false;
+        addErrorMessage("Genre is required.");
     }
     var rating = document.getElementById("rating").value;
     if (rating == "") {
